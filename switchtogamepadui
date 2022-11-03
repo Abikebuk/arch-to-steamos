@@ -7,7 +7,7 @@ do
   sleep 1
 done
 
-STATUS="null"
+STATUS="inactive"
 while [ $STATUS = "inactive" ]
 do
   echo "Opening lightdm..."

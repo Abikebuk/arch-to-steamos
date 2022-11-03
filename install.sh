@@ -35,6 +35,9 @@ case $1 in
     sudo cp ./switchtogamepadui /usr/bin
     # gamescope commands
     sudo cp ./gamepadui.conf /etc/sudoers.d/
+    # shortcuts
+    sudo cp ./switchtodesktop.desktop /usr/share/applications/
+    sudo cp ./switchtogamepadui.desktop /usr/share/applications/
     ;;
   "steam")
     # Somehow this command is super buggy

@@ -1,0 +1,17 @@
+#!/bin/sh
+systemctl stop lightdm.service
+STATUS=$(systemctl status lightdm.service | grep -E "Active: .*" | sed "s/.*: \([a-z]*\).*/\1/g")
+while [ "$STATUS" = "active" ]
+do
+  echo "Closing lightdm..."
+  sleep 1
+done
+
+STATUS="null"
+while [ $STATUS != "inactive" ]
+do
+  echo "Opening sddm..."
+  systemctl start sddm.service
+  sleep 1
+  STATUS=$(systemctl status sddm.service | grep -E "Active: .*" | sed "s/.*: \([a-z]*\).*/\1/g")
+done

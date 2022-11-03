@@ -31,6 +31,10 @@ case $1 in
     # gamescope commands
     sudo cp gamepadui.conf /etc/sudoers.d/
     ;;
+  "switch-scripts")
+    sudo cp ./switchtodesktop /usr/bin
+    sudo cp ./switchtogamepadui /usr/bin
+    ;;
   "steam")
     # Somehow this command is super buggy
     sudo pacman -S --noconfirm steam

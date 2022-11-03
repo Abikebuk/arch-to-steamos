@@ -16,12 +16,12 @@ case $1 in
     rm holo-keyring-20220203-4-any.pkg.tar.zst
     sudo pacman -Syyu --noconfirm
     yes | sudo pacman -S linux-firmware-neptune
-    sudo pacman -S --noconfirm steamos-customizations-jupiter jupiter-hw-support jupiter-fan-control
+    sudo pacman -S --noconfirm jupiter-hw-support jupiter-fan-control
     yes | sudo pacman -S steamdeck-kde-presets sddm-wayland mangohud lib32-mangohud --overwrite '*'
     ;;
   "base")
     sudo systemctl enable --now bluetooth
-    sudo pacman -S vulkan-radeon lib32-vulkan-radeon  gamescope p7zip
+    sudo pacman -S vulkan-radeon lib32-vulkan-radeon   p7zip
     sudo pacman -S --noconfirm lightdm
     yay -S --noconfirm proton-ge-custom-bin gamescope-session-git
     # lightdm config

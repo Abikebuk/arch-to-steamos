@@ -38,6 +38,7 @@ case $1 in
     # shortcuts
     sudo cp ./switchtodesktop.desktop /usr/share/applications/
     sudo cp ./switchtogamepadui.desktop /usr/share/applications/
+    sudo cp ./switchtogamepadui.desktop ~/Desktop/
     ;;
   "steam")
     # Somehow this command is super buggy

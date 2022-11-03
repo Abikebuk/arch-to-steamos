@@ -20,10 +20,10 @@ case $1 in
     yes | sudo pacman -S steamdeck-kde-presets sddm-wayland mangohud lib32-mangohud --overwrite '*'
     ;;
   "base")
-    sudo pacman -S --noconfirm p7zip protonup-qt-bin
     sudo systemctl enable --now bluetooth
-    sudo pacman -S vulkan-radeon lib32-vulkan-radeon  gamescope gamescope-session-git
+    sudo pacman -S vulkan-radeon lib32-vulkan-radeon  gamescope p7zip
     sudo pacman -S --noconfirm lightdm
+    yay -S --noconfirm proton-ge-custom-bin gamescope-session-git
     # lightdm config
     sudo sed -i "s/#autologin-user=.*/autologin-user=$USER/" /etc/lightdm/lightdm.conf
     sudo sed -i 's/#autologin-session=.*/autologin-session=gamescope-session/' /etc/lightdm/lightdm.conf

@@ -20,7 +20,7 @@ case $1 in
     yes | sudo pacman -S steamdeck-kde-presets sddm-wayland mangohud lib32-mangohud --overwrite '*'
     ;;
   "base")
-    sudo systemctl enable --now bluetooth
+    sudo systemctl enable -sz-now bluetooth
     sudo pacman -S vulkan-radeon lib32-vulkan-radeon   p7zip
     sudo pacman -S --noconfirm lightdm
     yay -S --noconfirm proton-ge-custom-bin gamescope-session-git
@@ -56,7 +56,7 @@ case $1 in
     END=1
     ;;
 esac
-if [ $END -eq 1 ]; then
+if [ $END -eq 0 ]; then
   shift 1
   ./install.sh "$@"
 fi

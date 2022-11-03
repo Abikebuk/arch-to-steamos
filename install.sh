@@ -27,17 +27,17 @@ case $1 in
     # lightdm config
     sudo sed -i "s/#autologin-user=.*/autologin-user=$USER/" /etc/lightdm.conf
     sudo sed -i 's/#autologin-session=.*/autologin-session=gamescope-session/' /etc/lightdm.conf
-
-    # gamescope commands
-    sudo cp gamepadui.conf /etc/sudoers.d/
     ;;
   "switch-scripts")
     sudo cp ./switchtodesktop /usr/bin
     sudo cp ./switchtogamepadui /usr/bin
+    # gamescope commands
+    sudo cp ./gamepadui.conf /etc/sudoers.d/
     ;;
   "steam")
     # Somehow this command is super buggy
     sudo pacman -S --noconfirm steam
+    steam
     steam -steamos3 -gamepadui -steamdeck -steampal
     steam -steamos3 -gamepadui -steamdeck -steampal
     steam -steamos3 -gamepadui -steamdeck -steampal

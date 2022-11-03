@@ -8,7 +8,7 @@ do
 done
 
 STATUS="null"
-while [ $STATUS != "inactive" ]
+while [ $STATUS == "inactive" ]
 do
   echo "Opening sddm..."
   systemctl start sddm.service

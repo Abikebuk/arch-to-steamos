@@ -4,9 +4,11 @@ if [ $# -eq 0 ] ; then
   exit
 fi
 END=0
+sudo pacman -Syu --noconfirm
 case $1 in
   "holo")
     # add additional-pacman.conf
+
     cat "./additional-pacman.conf" | sudo tee -a /etc/pacman.conf
     # add holo-keyring => gpg fail
     wget https://steamdeck-packages.steamos.cloud/archlinux-mirror/holo/os/x86_64/holo-keyring-20220203-4-any.pkg.tar.zst
@@ -56,7 +58,7 @@ case $1 in
     END=1
     ;;
 esac
-if [ $END -eq 0 ]; then
+if [ $END -eq 1 ]; then
   shift 1
   ./install.sh "$@"
 fi

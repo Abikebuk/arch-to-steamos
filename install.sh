@@ -25,8 +25,8 @@ case $1 in
     sudo pacman -S vulkan-radeon lib32-vulkan-radeon  gamescope gamescope-session-git
     sudo pacman -S --noconfirm lightdm
     # lightdm config
-    sudo sed -i "s/#autologin-user=.*/autologin-user=$USER/" /etc/lightdm.conf
-    sudo sed -i 's/#autologin-session=.*/autologin-session=gamescope-session/' /etc/lightdm.conf
+    sudo sed -i "s/#autologin-user=.*/autologin-user=$USER/" /etc/lightdm/lightdm.conf
+    sudo sed -i 's/#autologin-session=.*/autologin-session=gamescope-session/' /etc/lightdm/lightdm.conf
     ;;
   "switch-scripts")
     sudo cp ./switchtodesktop /usr/bin

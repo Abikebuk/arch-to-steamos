@@ -31,6 +31,7 @@ case $1 in
     sudo cp ./stopgamescope /usr/share/steamos-custom/
     sudo cp ./switchtogamepadui /usr/share/steamos-custom/
     # gamescope commands
+    touch /etc/sudoers.d/99-steamos-custom
     echo "$USER ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl stop sddm.service, /usr/bin/systemctl stop gamescope@$USER.service" | sudo tee /etc/sudoers.d/99-steamos-custom
     # shortcuts
     sudo cp ./switchtodesktop.desktop /usr/share/applications/

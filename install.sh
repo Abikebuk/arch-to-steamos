@@ -39,9 +39,9 @@ case $1 in
     sudo touch "$STOPGAMESCOPE"
     echo "#!/bin/bash" | sudo tee "$STOPGAMESCOPE"
     echo "sudo systemctl stop gamescope@$USER.service" | sudo tee -a "$STOPGAMESCOPE"
-    sudo chmod +x -R "$DIR*"
+    sudo chmod +x -R "$DIR"
     # gamescope commands
-    echo "$USER ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl stop sddm.service, /usr/bin/systemctl stop gamescope@$USER.service" | sudo tee /etc/sudoers.d/99-steamos-custom
+    echo "$USER ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl stop sddm.service, /usr/bin/systemctl stop gamescope@$USER.service, /usr/bin/systemctl start sddm.service, /usr/bin/systemctl start gamescope@$USER.service" | sudo tee /etc/sudoers.d/99-steamos-custom
     # shortcuts
     sudo cp ./switchtodesktop.desktop /usr/share/applications/
     sudo cp ./switchtogamepadui.desktop /usr/share/applications/

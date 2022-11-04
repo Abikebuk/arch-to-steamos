@@ -18,23 +18,20 @@ case $1 in
     rm holo-keyring-20220203-4-any.pkg.tar.zst
     sudo pacman -Syyu --noconfirm
     yes | sudo pacman -S linux-firmware-neptune
-    sudo pacman -S --noconfirm jupiter-hw-support jupiter-fan-control
+    sudo pacman -S --noconfirm jupiter-hw-support jupiter-fan-control jupiter/xorg-xwayland-jupiter --overwrite '*'
     yes | sudo pacman -S steamdeck-kde-presets sddm-wayland mangohud lib32-mangohud --overwrite '*'
     ;;
   "base")
     sudo systemctl enable -sz-now bluetooth
     sudo pacman -S vulkan-radeon lib32-vulkan-radeon   p7zip
-    sudo pacman -S --noconfirm lightdm
     yay -S --noconfirm proton-ge-custom-bin gamescope-session-git
-    # lightdm config
-    sudo sed -i "s/#autologin-user=.*/autologin-user=$USER/" /etc/lightdm/lightdm.conf
-    sudo sed -i 's/#autologin-session=.*/autologin-session=gamescope-session/' /etc/lightdm/lightdm.conf
     ;;
   "switch-scripts")
-    sudo cp ./switchtodesktop /usr/bin
-    sudo cp ./switchtogamepadui /usr/bin
+    sudo mkdir /usr/share/steamos-custom
+    sudo cp ./stopgamescope /usr/share/steamos-custom/
+    sudo cp ./switchtogamepadui /usr/share/steamos-custom/
     # gamescope commands
-    sudo cp ./gamepadui.conf /etc/sudoers.d/
+    echo "$USER ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl stop sddm.service, /usr/bin/systemctl stop gamescope@$USER.service" | sudo tee /etc/sudoers.d/99-steamos-custom
     # shortcuts
     sudo cp ./switchtodesktop.desktop /usr/share/applications/
     sudo cp ./switchtogamepadui.desktop /usr/share/applications/

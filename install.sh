@@ -32,11 +32,11 @@ case $1 in
     STARTGAMESCOPE=/usr/share/steamos-custom/startgamescope
     STOPGAMESCOPE=/usr/share/steamos-custom/stopgamescope
     sudo touch "$STARTGAMESCOPE"
-    echo "#!/bin/bash" | tee "$STARTGAMESCOPE"
-    echo "sudo systemctl start gamescope@$USER.service" | tee -a "$STARTGAMESCOPE"
+    echo "#!/bin/bash" | sudo tee "$STARTGAMESCOPE"
+    echo "sudo systemctl start gamescope@$USER.service" | sudo tee -a "$STARTGAMESCOPE"
     sudo touch "$STOPGAMESCOPE"
-    echo "#!/bin/bash" | tee "$STOPGAMESCOPE"
-    echo "sudo systemctl stop gamescope@$USER.service" | tee -a "$STOPGAMESCOPE"
+    echo "#!/bin/bash" | sudo tee "$STOPGAMESCOPE"
+    echo "sudo systemctl stop gamescope@$USER.service" | sudo tee -a "$STOPGAMESCOPE"
     # gamescope commands
     echo "$USER ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl stop sddm.service, /usr/bin/systemctl stop gamescope@$USER.service" | sudo tee /etc/sudoers.d/99-steamos-custom
     # shortcuts
